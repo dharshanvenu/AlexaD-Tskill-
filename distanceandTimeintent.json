@@ -1,0 +1,120 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "guide me",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "help"
+                    ]
+                },
+                {
+                    "name": "AMAZON.PauseIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ResumeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "cancel",
+                        "stop"
+                    ]
+                },
+                {
+                    "name": "DistanceAndTimeIntent",
+                    "slots": [
+                        {
+                            "name": "places",
+                            "type": "AMAZON.City",
+                            "samples": [
+                                "{places}"
+                            ]
+                        },
+                        {
+                            "name": "Regions",
+                            "type": "AMAZON.Region",
+                            "samples": [
+                                "{Regions}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "from {Regions} to {places}",
+                        "distance between {Regions} and {places}",
+                        "to go from {Regions} to {places}",
+                        "{Regions} to {places}"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "DistanceAndTimeIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent-DistanceAndTimeIntent"
+                    },
+                    "slots": [
+                        {
+                            "name": "places",
+                            "type": "AMAZON.City",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1314195369426.386538696212"
+                            }
+                        },
+                        {
+                            "name": "Regions",
+                            "type": "AMAZON.Region",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1314195369426.1030684971583"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent-DistanceAndTimeIntent",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to find distance and time between two places"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1314195369426.386538696212",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "You need to tell me the second place name"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1314195369426.1030684971583",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "You need to tell me the second region name"
+                    }
+                ]
+            }
+        ]
+    }
+}
